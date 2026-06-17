@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSVO</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #7B7B7B;
+      font-family: Arial, sans-serif;
+      cursor: none; /* oculta el cursor real fuera del iframe */
+    }
+
+    .pagina {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .cursor-balon {
+      position: fixed;
+      width: 34px;
+      height: 34px;
+      left: 0;
+      top: 0;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Opcional: en móvil no mostramos el balón */
+    @media (max-width: 768px) {
+      .cursor-balon {
+        display: none;
+      }
+      html, body {
+        cursor: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <h1>🦁 DSVO</h1>
+
+<div style="
+  width:500px;
+  height:400px;
+  overflow:hidden;
+  position:relative;
+">
+
+  <iframe
+    src="https://1drv.ms/x/c/92eca917b5d15fef/IQTvp-kzCJc0Qqvvo3hXWeiQAVkj0Chkbt7E2pcxM93AFgk?em=2&Item='Sheet2'!A1%3AE26&wdHideGridlines=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0"
+    style="
+      top:-65px;       /* oculta barra inferior */
+      left:-50px;      /* centra mejor */
+      width:890px;     /* doble tamaño */
+      height:480px;
+      transform: scale(1);
+      transform-origin: top left;
+    ">
+  </iframe>
+  </div>
+
+
+
+<img
+  id="fakeCursor"
+  class="cursor-balon"
+  src="https://img.icons8.com/?size=100&id=uKVJzWYdiV27&format=png&color=000000"
+  alt=""
+/>
+
+  <script>
+    const fakeCursor = document.getElementById("fakeCursor");
+    const overlay = document.getElementById("iframeOverlay");
+
+    function moverBalon(x, y) {
+      fakeCursor.style.left = x + "px";
+      fakeCursor.style.top = y + "px";
+    }
+
+    // Movimiento en toda la página
+    document.addEventListener("mousemove", (e) => {
+      moverBalon(e.clientX, e.clientY);
+    });
+
+
+  </script>
+</body>
+</html>
